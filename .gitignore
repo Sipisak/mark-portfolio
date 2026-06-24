@@ -12,3 +12,5 @@ yarn-error.log*
 # Claude Code
 .claude/
 CLAUDE.md
+dist-tsnode
+*.tsbuildinfo
