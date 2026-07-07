@@ -1,7 +1,8 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { T } from "../theme";
 import { FadeUp, Stagger } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
+import { useHover } from "../hooks/useHover";
 
 const STACK: { label: string; items: string[] }[] = [
   { label: "Languages", items: ["TypeScript", "JavaScript", "Java", "Python", "HTML", "CSS"] },
@@ -11,9 +12,10 @@ const STACK: { label: string; items: string[] }[] = [
 ];
 
 function Pill({ children }: { children: ReactNode }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   return (
     <span
+      {...hoverProps}
       style={{
         background: hovered ? T.accentLow : T.surface,
         border: `1px solid ${hovered ? T.accent : T.border}`,
@@ -27,8 +29,6 @@ function Pill({ children }: { children: ReactNode }) {
         transform: hovered ? "translateY(-2px)" : "none",
         display: "inline-block",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {children}
     </span>

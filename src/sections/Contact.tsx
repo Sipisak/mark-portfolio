@@ -1,9 +1,10 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { T } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { Btn } from "../components/Button";
+import { useHover } from "../hooks/useHover";
 
 function ContactLink({
   href,
@@ -14,12 +15,13 @@ function ContactLink({
   icon: ReactNode;
   label: string;
 }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      {...hoverProps}
       style={{
         display: "flex",
         alignItems: "center",
@@ -34,8 +36,6 @@ function ContactLink({
         fontWeight: 500,
         transition: "all .2s",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {icon} {label}
     </a>

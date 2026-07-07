@@ -1,20 +1,21 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { T } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
+import { Section } from "../components/Section";
+import { useHover } from "../hooks/useHover";
 
 function StatBox({ val, sub }: { val: string; sub: string }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   return (
     <div
+      {...hoverProps}
       style={{
         background: hovered ? T.surface2 : T.surface,
         padding: "28px 24px",
         transition: "background .25s",
         cursor: "default",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div
         style={{
@@ -76,65 +77,55 @@ export function About() {
     { val: "FS", sub: "Full-Stack Development" },
   ];
   return (
-    <section
-      id="about"
-      style={{
-        padding: "120px 48px",
-        borderTop: `1px solid ${T.border}`,
-        position: "relative",
-        zIndex: 1,
-      }}
-    >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-        <FadeUp>
-          <Label>{"// About"}</Label>
-        </FadeUp>
-        <FadeUp delay={0.1}>
-          <SectionTitle>
-            Engineer, builder,
-            <br />
-            problem solver.
-          </SectionTitle>
+    <Section id="about">
+      <FadeUp>
+        <Label>{"// About"}</Label>
+      </FadeUp>
+      <FadeUp delay={0.1}>
+        <SectionTitle>
+          Engineer, builder,
+          <br />
+          problem solver.
+        </SectionTitle>
+      </FadeUp>
+
+      <div className="about-grid">
+        <FadeUp delay={0.2}>
+          <div>
+            {paragraphs.map((p, i) => (
+              <p
+                key={i}
+                style={{
+                  fontSize: 17,
+                  color: T.muted,
+                  lineHeight: 1.75,
+                  marginBottom: 18,
+                }}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
         </FadeUp>
 
-        <div className="about-grid">
-          <FadeUp delay={0.2}>
-            <div>
-              {paragraphs.map((p, i) => (
-                <p
-                  key={i}
-                  style={{
-                    fontSize: 17,
-                    color: T.muted,
-                    lineHeight: 1.75,
-                    marginBottom: 18,
-                  }}
-                >
-                  {p}
-                </p>
-              ))}
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.35}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 1,
-                background: T.border,
-                border: `1px solid ${T.border}`,
-                borderRadius: 14,
-                overflow: "hidden",
-              }}
-            >
-              {stats.map((s, i) => (
-                <StatBox key={i} {...s} />
-              ))}
-            </div>
-          </FadeUp>
-        </div>
+        <FadeUp delay={0.35}>
+          <div
+            className="stat-grid"
+            style={{
+              display: "grid",
+              gap: 1,
+              background: T.border,
+              border: `1px solid ${T.border}`,
+              borderRadius: 14,
+              overflow: "hidden",
+            }}
+          >
+            {stats.map((s, i) => (
+              <StatBox key={i} {...s} />
+            ))}
+          </div>
+        </FadeUp>
       </div>
-    </section>
+    </Section>
   );
 }

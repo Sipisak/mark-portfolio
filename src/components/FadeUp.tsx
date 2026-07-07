@@ -39,11 +39,16 @@ export function Stagger({
 }) {
   const [ref, visible] = useReveal(0.05);
   const items = Array.isArray(children) ? children : [children];
+  // The wrapper is display:contents so children participate directly in the
+  // parent's flex/grid layout — but a display:contents element has no layout
+  // box, so an IntersectionObserver on it never fires. Observe the first real
+  // child box instead; when it enters the viewport the whole group reveals.
   return (
-    <div ref={ref} style={{ display: "contents" }}>
+    <div style={{ display: "contents" }}>
       {items.map((child, i) => (
         <div
           key={i}
+          ref={i === 0 ? ref : undefined}
           style={{
             opacity: visible ? 1 : 0,
             transform: visible

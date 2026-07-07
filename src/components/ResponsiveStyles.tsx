@@ -9,6 +9,7 @@ export function ResponsiveStyles() {
     style.id = id;
     style.textContent = `
       .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+      .stat-grid { grid-template-columns:1fr 1fr; }
       @media (max-width: 900px) {
         .about-grid { grid-template-columns:1fr; gap:48px; }
         .pc-body { grid-template-columns:1fr !important; }
@@ -19,6 +20,7 @@ export function ResponsiveStyles() {
         .pc-head, .pc-body, .pc-foot { padding-left:24px !important; padding-right:24px !important; }
         .pc-head { flex-direction:column !important; }
         .pc-foot { flex-direction:column !important; }
+        .stat-grid { grid-template-columns:1fr; }
       }
     `;
     document.head.appendChild(style);

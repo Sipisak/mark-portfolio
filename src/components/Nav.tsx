@@ -1,5 +1,25 @@
 import { useState, useEffect } from "react";
 import { T } from "../theme";
+import { useHover } from "../hooks/useHover";
+
+function NavLink({ label }: { label: string }) {
+  const [hovered, hoverProps] = useHover();
+  return (
+    <a
+      href={`#${label.toLowerCase()}`}
+      {...hoverProps}
+      style={{
+        fontSize: 14,
+        fontWeight: 500,
+        color: hovered ? T.text : T.muted,
+        textDecoration: "none",
+        transition: "color .2s",
+      }}
+    >
+      {label}
+    </a>
+  );
+}
 
 /* ─── nav ─────────────────────────────────────────── */
 export function Nav() {
@@ -42,21 +62,7 @@ export function Nav() {
       </a>
       <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
         {["About", "Stack", "Projects", "Contact"].map((s) => (
-          <a
-            key={s}
-            href={`#${s.toLowerCase()}`}
-            style={{
-              fontSize: 14,
-              fontWeight: 500,
-              color: T.muted,
-              textDecoration: "none",
-              transition: "color .2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = T.text)}
-            onMouseLeave={(e) => (e.currentTarget.style.color = T.muted)}
-          >
-            {s}
-          </a>
+          <NavLink key={s} label={s} />
         ))}
       </div>
     </nav>

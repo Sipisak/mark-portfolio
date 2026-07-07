@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { ExternalLink, Code2, ChevronRight } from "lucide-react";
-import { T } from "../theme";
+import { T, accentAlpha } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { Btn } from "../components/Button";
+import { useHover } from "../hooks/useHover";
 
 function FeaturedProject() {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   const features = [
     "Real-time stock prices with candlestick & line charts",
     "Personalized watchlists and email price alerts",
@@ -17,16 +17,15 @@ function FeaturedProject() {
   const techs = ["Next.js", "TypeScript", "MongoDB", "Better Auth", "Inngest", "Finnhub API", "Gemini API", "Tailwind", "Shadcn UI"];
   return (
     <div
+      {...hoverProps}
       style={{
         background: T.surface,
         border: `1px solid ${hovered ? T.accent : T.border}`,
         borderRadius: 16,
         overflow: "hidden",
         transition: "border-color .3s, box-shadow .3s",
-        boxShadow: hovered ? "0 0 60px rgba(240,112,64,0.06)" : "none",
+        boxShadow: hovered ? `0 0 60px ${accentAlpha(0.06)}` : "none",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div
         className="pc-head"
@@ -64,7 +63,7 @@ function FeaturedProject() {
             fontSize: 11,
             background: T.accentLow,
             color: T.accent,
-            border: "1px solid rgba(240,112,64,0.28)",
+            border: `1px solid ${accentAlpha(0.28)}`,
             padding: "4px 12px",
             borderRadius: 4,
             letterSpacing: "0.07em",
@@ -141,12 +140,13 @@ function MiniCard({
   link?: string;
   linkText?: string;
 }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   return (
     <div
+      {...hoverProps}
       style={{
         background: T.surface,
-        border: `1px solid ${hovered ? "rgba(240,112,64,0.4)" : T.border}`,
+        border: `1px solid ${hovered ? accentAlpha(0.4) : T.border}`,
         borderRadius: 12,
         padding: 28,
         transition: "border-color .25s, transform .25s",
@@ -155,8 +155,6 @@ function MiniCard({
         display: "flex",
         flexDirection: "column",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
         <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: 16, color: T.white }}>

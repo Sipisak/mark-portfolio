@@ -1,5 +1,6 @@
-import { useState, type ReactNode, type CSSProperties } from "react";
-import { T } from "../theme";
+import { type ReactNode, type CSSProperties } from "react";
+import { T, accentAlpha } from "../theme";
+import { useHover } from "../hooks/useHover";
 
 /* ─── button ──────────────────────────────────────── */
 export function Btn({
@@ -13,7 +14,7 @@ export function Btn({
   primary?: boolean;
   external?: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, hoverProps] = useHover();
   const base: CSSProperties = {
     display: "inline-flex",
     alignItems: "center",
@@ -31,10 +32,10 @@ export function Btn({
   const style: CSSProperties = primary
     ? {
         ...base,
-        background: hovered ? "#d85f30" : T.accent,
+        background: hovered ? T.accentHover : T.accent,
         color: T.white,
         transform: hovered ? "translateY(-2px)" : "none",
-        boxShadow: hovered ? "0 8px 32px rgba(240,112,64,0.25)" : "none",
+        boxShadow: hovered ? `0 8px 32px ${accentAlpha(0.25)}` : "none",
       }
     : {
         ...base,
@@ -48,8 +49,7 @@ export function Btn({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       style={style}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      {...hoverProps}
     >
       {children}
     </a>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Github, Linkedin, ArrowDown, ChevronRight } from "lucide-react";
-import { T } from "../theme";
+import { T, accentAlpha } from "../theme";
 import { Btn } from "../components/Button";
 
 /* ─── hero ────────────────────────────────────────── */
@@ -32,8 +32,9 @@ export function Hero() {
           left: "-5%",
           width: "60vw",
           height: "60vw",
-          background:
-            "radial-gradient(ellipse, rgba(240,112,64,0.07) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${accentAlpha(
+            0.07
+          )} 0%, transparent 70%)`,
           pointerEvents: "none",
         }}
       />
