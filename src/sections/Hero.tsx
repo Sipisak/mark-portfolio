@@ -84,7 +84,7 @@ export function Hero() {
           style={{
             fontSize: 19,
             color: T.muted,
-            maxWidth: 480,
+            maxWidth: 560,
             lineHeight: 1.7,
             marginBottom: 44,
             opacity: mounted ? 1 : 0,
@@ -92,12 +92,12 @@ export function Hero() {
             transition: trans(0.5),
           }}
         >
-          Building{" "}
+          Building reliable software — from backend systems and real-time
+          applications to{" "}
           <span style={{ color: T.text, fontWeight: 500 }}>
-            clean, scalable, and practical
-          </span>{" "}
-          digital products — from backend APIs and real-time systems to
-          AI-powered integrations.
+            AI-powered automation
+          </span>
+          .
         </p>
 
         <div
