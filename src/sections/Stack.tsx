@@ -3,44 +3,30 @@ import { T } from "../theme";
 import { FadeUp, Stagger } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { useHover } from "../hooks/useHover";
+import { usePreferences } from "../preferences";
 
-const STACK: { label: string; items: string[] }[] = [
-  {
-    label: "Languages",
-    items: ["TypeScript", "JavaScript", "Java", "Python", "SQL", "HTML", "CSS"],
-  },
-  {
-    label: "Frontend",
-    items: ["React", "Next.js", "Vite", "Tailwind CSS", "Shadcn UI"],
-  },
-  {
-    label: "Backend & Data",
-    items: [
-      "Node.js",
-      "Azure Functions",
-      "REST APIs",
-      "Prisma",
-      "PostgreSQL",
-      "Azure SQL",
-      "MongoDB",
-    ],
-  },
-  {
-    label: "Cloud & Automation",
-    items: [
-      "Azure",
-      "Docker",
-      "GitHub Actions",
-      "Inngest",
-      "WebSockets",
-      "Document Intelligence",
-    ],
-  },
-  {
-    label: "Testing & Tooling",
-    items: ["Playwright", "Vitest", "Git", "Postman", "Linux", "Figma", "VS Code"],
-  },
-];
+const STACK_ITEMS = {
+  languages: ["TypeScript", "JavaScript", "Java", "Python", "SQL", "HTML", "CSS"],
+  frontend: ["React", "Next.js", "Vite", "Tailwind CSS", "Shadcn UI"],
+  backend: [
+    "Node.js",
+    "Azure Functions",
+    "REST APIs",
+    "Prisma",
+    "PostgreSQL",
+    "Azure SQL",
+    "MongoDB",
+  ],
+  cloud: [
+    "Azure",
+    "Docker",
+    "GitHub Actions",
+    "Inngest",
+    "WebSockets",
+    "Document Intelligence",
+  ],
+  testing: ["Playwright", "Vitest", "Git", "Postman", "Linux", "Figma", "VS Code"],
+} as const;
 
 function Pill({ children }: { children: ReactNode }) {
   const [hovered, hoverProps] = useHover();
@@ -67,6 +53,15 @@ function Pill({ children }: { children: ReactNode }) {
 }
 
 export function Stack() {
+  const { t } = usePreferences();
+  const rows = [
+    { label: t.stack.categories.languages, items: STACK_ITEMS.languages },
+    { label: t.stack.categories.frontend, items: STACK_ITEMS.frontend },
+    { label: t.stack.categories.backend, items: STACK_ITEMS.backend },
+    { label: t.stack.categories.cloud, items: STACK_ITEMS.cloud },
+    { label: t.stack.categories.testing, items: STACK_ITEMS.testing },
+  ];
+
   return (
     <section
       id="stack"
@@ -79,14 +74,14 @@ export function Stack() {
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         <FadeUp>
-          <Label>{"// Stack"}</Label>
+          <Label>{t.stack.label}</Label>
         </FadeUp>
         <FadeUp delay={0.1}>
-          <SectionTitle>Tools of the trade.</SectionTitle>
+          <SectionTitle>{t.stack.title}</SectionTitle>
         </FadeUp>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-          {STACK.map((row, rowIndex) => (
+          {rows.map((row, rowIndex) => (
             <FadeUp key={row.label} delay={0.15 + rowIndex * 0.08}>
               <p
                 style={{
