@@ -1,6 +1,6 @@
 import { T, accentAlpha } from "../theme";
 
-type PreviewType = "signalist" | "invoice";
+type PreviewType = "signalist" | "invoice" | "roofing";
 
 function BrowserFrame({ children, label }: { children: React.ReactNode; label: string }) {
   return (
@@ -193,6 +193,60 @@ function InvoicePreview() {
   );
 }
 
+function RoofingPreview() {
+  return (
+    <BrowserFrame label="Střechy Krušnohor business website preview">
+      <div style={{ minHeight: 310, background: T.surface }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14, padding: "12px 18px", borderBottom: `1px solid ${T.border}`, background: T.bg }}>
+          <div style={{ color: T.white, fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700 }}>
+            Střechy <span style={{ color: T.accent }}>Krušnohor</span>
+          </div>
+          <div className="roofing-preview-nav" style={{ display: "flex", gap: 13, color: T.muted, fontSize: 8 }}>
+            <span>Produkty</span><span>O nás</span><span>Akce</span><span>Kontakt</span>
+          </div>
+          <span style={{ color: "white", background: T.accent, borderRadius: 5, padding: "6px 9px", fontSize: 8 }}>Poptávka</span>
+        </div>
+
+        <div className="roofing-preview-hero" style={{ display: "grid", gridTemplateColumns: "1.15fr .85fr", gap: 18, alignItems: "center", padding: "24px 22px 18px", background: `linear-gradient(135deg, ${accentAlpha(0.12)}, transparent 58%)` }}>
+          <div>
+            <div style={{ color: T.accent, fontFamily: "'JetBrains Mono',monospace", fontSize: 8, textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 7 }}>
+              Střešní krytiny · Chomutov
+            </div>
+            <div style={{ color: T.white, fontFamily: "'Space Grotesk',sans-serif", fontSize: 23, fontWeight: 700, lineHeight: 1.08, maxWidth: 330 }}>
+              Kvalitní materiály pro střechu, která vydrží.
+            </div>
+            <div style={{ color: T.muted, fontSize: 9, lineHeight: 1.55, marginTop: 9, maxWidth: 310 }}>
+              Přehledná nabídka krytin, střešních oken a doplňků s lokálním poradenstvím.
+            </div>
+            <div style={{ display: "flex", gap: 7, marginTop: 14 }}>
+              <span style={{ color: "white", background: T.accent, borderRadius: 5, padding: "7px 10px", fontSize: 8 }}>Cenová nabídka zdarma</span>
+              <span style={{ color: T.text, border: `1px solid ${T.border}`, borderRadius: 5, padding: "7px 10px", fontSize: 8 }}>Prohlédnout produkty</span>
+            </div>
+          </div>
+
+          <div style={{ position: "relative", height: 142, borderRadius: 10, overflow: "hidden", background: `linear-gradient(180deg, ${T.surface2}, ${T.bg})`, border: `1px solid ${T.border}` }}>
+            <div style={{ position: "absolute", left: "17%", right: "17%", bottom: 17, height: 68, borderRadius: "3px 3px 7px 7px", background: T.surface, border: `1px solid ${T.border}` }} />
+            <div style={{ position: "absolute", left: "11%", right: "11%", bottom: 72, height: 64, background: T.accent, clipPath: "polygon(50% 0, 100% 72%, 92% 100%, 8% 100%, 0 72%)", opacity: .9 }} />
+            <div style={{ position: "absolute", left: "38%", bottom: 17, width: 25, height: 42, borderRadius: "3px 3px 0 0", background: T.surface2, border: `1px solid ${T.border}` }} />
+            <div style={{ position: "absolute", right: "27%", bottom: 40, width: 25, height: 20, borderRadius: 3, background: T.blue, opacity: .75 }} />
+          </div>
+        </div>
+
+        <div className="roofing-products" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 7, padding: "0 22px 20px" }}>
+          {["Plechové krytiny", "Střešní tašky", "Střešní okna", "Doplňky"].map((item, index) => (
+            <div key={item} style={{ padding: "10px 9px", borderRadius: 7, background: T.bg, border: `1px solid ${T.border}` }}>
+              <div style={{ width: 20, height: 3, borderRadius: 2, background: index === 0 ? T.accent : T.blue, marginBottom: 8 }} />
+              <div style={{ color: T.text, fontSize: 8, lineHeight: 1.35 }}>{item}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </BrowserFrame>
+  );
+}
+
 export function ProjectPreview({ type }: { type: PreviewType }) {
-  return type === "signalist" ? <SignalistPreview /> : <InvoicePreview />;
+  if (type === "signalist") return <SignalistPreview />;
+  if (type === "invoice") return <InvoicePreview />;
+  return <RoofingPreview />;
 }
