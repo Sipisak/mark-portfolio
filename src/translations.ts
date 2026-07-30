@@ -42,6 +42,27 @@ export const translations = {
         { value: "AZ", label: "Azure Development" },
       ],
     },
+    focus: {
+      label: "// Focus",
+      title: "What I focus on.",
+      items: [
+        {
+          title: "Backend systems & integrations",
+          description:
+            "APIs, data models, integration layers, and cloud services designed around reliable business workflows.",
+        },
+        {
+          title: "AI automation",
+          description:
+            "Document processing, intelligent workflows, agents, and human-in-the-loop systems where uncertainty stays visible.",
+        },
+        {
+          title: "Real-time & full-stack applications",
+          description:
+            "WebSocket communication, event-driven behavior, modern frontends, and complete applications from architecture to deployment.",
+        },
+      ],
+    },
     experience: {
       label: "// Experience",
       title: "Where I've worked and learned.",
@@ -91,6 +112,7 @@ export const translations = {
       techStack: "Tech stack",
       liveDemo: "Live demo",
       sourceCode: "Source code",
+      caseStudy: "View case study",
       signalist: {
         description:
           "A full-stack market monitoring platform with real-time data, personalized alerts, event-driven workflows, and AI-generated summaries.",
@@ -176,6 +198,27 @@ export const translations = {
         { value: "AZ", label: "Vývoj v Azure" },
       ],
     },
+    focus: {
+      label: "// Zaměření",
+      title: "Na co se zaměřuji.",
+      items: [
+        {
+          title: "Backendové systémy a integrace",
+          description:
+            "API, datové modely, integrační vrstvy a cloudové služby navržené kolem spolehlivých firemních procesů.",
+        },
+        {
+          title: "AI automatizace",
+          description:
+            "Zpracování dokumentů, inteligentní workflow, agenti a human-in-the-loop systémy, ve kterých zůstává nejistota viditelná.",
+        },
+        {
+          title: "Realtime a full-stack aplikace",
+          description:
+            "Komunikace přes WebSocket, event-driven chování, moderní frontend a kompletní aplikace od architektury po nasazení.",
+        },
+      ],
+    },
     experience: {
       label: "// Zkušenosti",
       title: "Kde jsem pracoval a co jsem studoval.",
@@ -225,6 +268,7 @@ export const translations = {
       techStack: "Technologie",
       liveDemo: "Živé demo",
       sourceCode: "Zdrojový kód",
+      caseStudy: "Zobrazit případovou studii",
       signalist: {
         description:
           "Full-stack platforma pro sledování trhů s realtime daty, personalizovanými alerty, event-driven workflow a souhrny generovanými pomocí AI.",
