@@ -4,35 +4,17 @@ import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { Section } from "../components/Section";
 import { useHover } from "../hooks/useHover";
+import { usePreferences } from "../preferences";
 
-const EXPERIENCE = [
-  {
-    role: "AI Automation Specialist / Software Engineer",
-    organization: "TRONEXO",
-    period: "2026 — Present",
-    description:
-      "Designing and developing AI-powered automation, backend services, internal applications, and system integrations. Working across architecture, implementation, testing, cloud deployment, and monitoring.",
-    type: "work" as const,
-  },
-  {
-    role: "R&D Software Engineering Intern",
-    organization: "Quadient",
-    period: "2025 — 2026",
-    description:
-      "Worked across software development, QA automation, testing, operations, and product support within an international R&D environment.",
-    type: "work" as const,
-  },
-  {
-    role: "Ing. / MSc in Applied Informatics",
-    organization: "University of Hradec Králové",
-    period: "Completed 2026",
-    description:
-      "Graduate studies focused on applied software engineering, information systems, and the design and implementation of production-oriented applications.",
-    type: "education" as const,
-  },
-];
+type ExperienceItem = {
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+  type: "work" | "education";
+};
 
-function ExperienceCard({ item }: { item: (typeof EXPERIENCE)[number] }) {
+function ExperienceCard({ item }: { item: ExperienceItem }) {
   const [hovered, hoverProps] = useHover();
   const Icon = item.type === "education" ? GraduationCap : BriefcaseBusiness;
 
@@ -50,6 +32,7 @@ function ExperienceCard({ item }: { item: (typeof EXPERIENCE)[number] }) {
       }}
     >
       <div
+        className="experience-card-head"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -112,17 +95,20 @@ function ExperienceCard({ item }: { item: (typeof EXPERIENCE)[number] }) {
 }
 
 export function Experience() {
+  const { t } = usePreferences();
+  const items: readonly ExperienceItem[] = t.experience.items;
+
   return (
     <Section id="experience">
       <FadeUp>
-        <Label>{"// Experience"}</Label>
+        <Label>{t.experience.label}</Label>
       </FadeUp>
       <FadeUp delay={0.1}>
-        <SectionTitle>Where I've worked and learned.</SectionTitle>
+        <SectionTitle>{t.experience.title}</SectionTitle>
       </FadeUp>
 
       <div style={{ display: "grid", gap: 16 }}>
-        {EXPERIENCE.map((item, index) => (
+        {items.map((item, index) => (
           <FadeUp key={`${item.organization}-${item.role}`} delay={0.18 + index * 0.1}>
             <ExperienceCard item={item} />
           </FadeUp>
