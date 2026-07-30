@@ -1,11 +1,11 @@
-import { type ReactNode } from "react";
 import { T } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { Section } from "../components/Section";
 import { useHover } from "../hooks/useHover";
+import { usePreferences } from "../preferences";
 
-function StatBox({ val, sub }: { val: string; sub: string }) {
+function StatBox({ value, label }: { value: string; label: string }) {
   const [hovered, hoverProps] = useHover();
   return (
     <div
@@ -28,69 +28,36 @@ function StatBox({ val, sub }: { val: string; sub: string }) {
           marginBottom: 6,
         }}
       >
-        {val}
+        {value}
         <span style={{ color: T.accent, fontSize: "0.6em" }}>.</span>
       </div>
-      <div style={{ fontSize: 13, color: T.muted, lineHeight: 1.4 }}>{sub}</div>
+      <div style={{ fontSize: 13, color: T.muted, lineHeight: 1.4 }}>{label}</div>
     </div>
   );
 }
 
 export function About() {
-  const paragraphs: ReactNode[] = [
-    <>
-      I'm a{" "}
-      <strong style={{ color: T.text, fontWeight: 500 }}>
-        software engineer
-      </strong>{" "}
-      based in the Czech Republic, holding an Ing./MSc in Applied Informatics
-      from the{" "}
-      <strong style={{ color: T.text, fontWeight: 500 }}>
-        University of Hradec Králové
-      </strong>
-      .
-    </>,
-    <>
-      I build full-stack applications, backend services, system integrations,
-      and automation workflows — from initial architecture and implementation
-      to testing, deployment, and monitoring.
-    </>,
-    <>
-      My current work focuses on{" "}
-      <strong style={{ color: T.text, fontWeight: 500 }}>
-        AI-powered automation, document processing, event-driven systems, and
-        internal business applications
-      </strong>{" "}
-      using TypeScript, Node.js, React, Azure, and SQL.
-    </>,
-  ];
-
-  const stats = [
-    { val: "Ing", sub: "MSc Applied Informatics" },
-    { val: "FS", sub: "Frontend to Infrastructure" },
-    { val: "AI", sub: "Automation & Integrations" },
-    { val: "AZ", sub: "Azure Development" },
-  ];
+  const { t } = usePreferences();
 
   return (
     <Section id="about">
       <FadeUp>
-        <Label>{"// About"}</Label>
+        <Label>{t.about.label}</Label>
       </FadeUp>
       <FadeUp delay={0.1}>
         <SectionTitle>
-          Engineer, builder,
+          {t.about.titleLine1}
           <br />
-          problem solver.
+          {t.about.titleLine2}
         </SectionTitle>
       </FadeUp>
 
       <div className="about-grid">
         <FadeUp delay={0.2}>
           <div>
-            {paragraphs.map((paragraph, index) => (
+            {t.about.paragraphs.map((paragraph) => (
               <p
-                key={index}
+                key={paragraph}
                 style={{
                   fontSize: 17,
                   color: T.muted,
@@ -116,8 +83,8 @@ export function About() {
               overflow: "hidden",
             }}
           >
-            {stats.map((stat) => (
-              <StatBox key={stat.sub} {...stat} />
+            {t.about.stats.map((stat) => (
+              <StatBox key={stat.label} {...stat} />
             ))}
           </div>
         </FadeUp>
