@@ -28,18 +28,18 @@ export const translations = {
     },
     about: {
       label: "// About",
-      titleLine1: "Engineer, builder,",
-      titleLine2: "problem solver.",
+      titleLine1: "Software, systems,",
+      titleLine2: "and automation.",
       paragraphs: [
-        "I'm a software engineer based in the Czech Republic, holding an Ing./MSc in Applied Informatics from the University of Hradec Králové.",
-        "I build full-stack applications, backend services, system integrations, and automation workflows — from initial architecture and implementation to testing, deployment, and monitoring.",
-        "My current work focuses on AI-powered automation, document processing, event-driven systems, and internal business applications using TypeScript, Node.js, React, Azure, and SQL.",
+        "I'm a software engineer building full-stack applications, backend services, system integrations, and automation workflows.",
+        "I work across the complete development lifecycle — from architecture and implementation to testing, deployment, and monitoring.",
+        "My current focus includes AI-powered automation, document processing, event-driven systems, and internal business applications using TypeScript, Node.js, React, Azure, and SQL.",
       ],
       stats: [
-        { value: "Ing", label: "MSc Applied Informatics" },
-        { value: "FS", label: "Frontend to Infrastructure" },
-        { value: "AI", label: "Automation & Integrations" },
-        { value: "AZ", label: "Azure Development" },
+        { value: "BE", label: "Services & integrations" },
+        { value: "RT", label: "Events & WebSockets" },
+        { value: "AI", label: "Automation workflows" },
+        { value: "AZ", label: "Azure development" },
       ],
     },
     focus: {
@@ -65,7 +65,7 @@ export const translations = {
     },
     experience: {
       label: "// Experience",
-      title: "Where I've worked and learned.",
+      title: "Employment & Education.",
       items: [
         {
           role: "AI Automation Specialist / Software Engineer",
@@ -184,17 +184,17 @@ export const translations = {
     },
     about: {
       label: "// O mně",
-      titleLine1: "Vývojář, tvůrce,",
-      titleLine2: "řešitel problémů.",
+      titleLine1: "Software, systémy",
+      titleLine2: "a automatizace.",
       paragraphs: [
-        "Jsem softwarový vývojář z Česka a mám titul Ing. v oboru Aplikovaná informatika z Univerzity Hradec Králové.",
-        "Vyvíjím full-stack aplikace, backendové služby, systémové integrace a automatizační workflow — od návrhu architektury a implementace až po testování, nasazení a monitoring.",
-        "V současnosti se zaměřuji na automatizaci s využitím AI, zpracování dokumentů, event-driven systémy a interní firemní aplikace v TypeScriptu, Node.js, Reactu, Azure a SQL.",
+        "Jsem software engineer zaměřený na full-stack aplikace, backendové služby, systémové integrace a automatizační workflow.",
+        "Pracuji napříč celým vývojovým cyklem — od návrhu architektury a implementace přes testování až po nasazení a monitoring.",
+        "Aktuálně se věnuji především AI automatizaci, zpracování dokumentů, event-driven systémům a interním podnikovým aplikacím v TypeScriptu, Node.js, Reactu, Azure a SQL.",
       ],
       stats: [
-        { value: "Ing", label: "Aplikovaná informatika" },
-        { value: "FS", label: "Od frontendu po infrastrukturu" },
-        { value: "AI", label: "Automatizace a integrace" },
+        { value: "BE", label: "Služby a integrace" },
+        { value: "RT", label: "Události a WebSockety" },
+        { value: "AI", label: "Automatizační workflow" },
         { value: "AZ", label: "Vývoj v Azure" },
       ],
     },
@@ -221,7 +221,7 @@ export const translations = {
     },
     experience: {
       label: "// Zkušenosti",
-      title: "Kde jsem pracoval a co jsem studoval.",
+      title: "Zaměstnání a studium.",
       items: [
         {
           role: "AI Automation Specialist / Software Engineer",
