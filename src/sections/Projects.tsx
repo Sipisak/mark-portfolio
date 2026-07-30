@@ -92,7 +92,7 @@ function ProjectCard({ title, tag, description, highlights, techs, link, linkTex
   link: string;
   linkText: string;
   caseStudyLink?: string;
-  preview?: "invoice";
+  preview?: "invoice" | "roofing";
 }) {
   const [hovered, hoverProps] = useHover();
   const { t } = usePreferences();
@@ -152,7 +152,30 @@ function ProjectCard({ title, tag, description, highlights, techs, link, linkTex
 }
 
 export function Projects() {
-  const { t } = usePreferences();
+  const { t, language } = usePreferences();
+  const roofing = language === "cs"
+    ? {
+        tag: "Firemní web",
+        description:
+          "Responzivní WordPress web pro regionálního prodejce střešních materiálů, zaměřený na přehlednou nabídku, lokální SEO a získávání poptávek.",
+        highlights: [
+          "Jasná produktová navigace a opakované CTA",
+          "Lokální obsah pro region Chomutov a Krušné hory",
+          "Poptávkový formulář s GDPR souhlasem",
+        ],
+        live: "Navštívit web",
+      }
+    : {
+        tag: "Business website",
+        description:
+          "A responsive WordPress website for a regional roofing-material supplier, focused on clear product discovery, local SEO, and lead generation.",
+        highlights: [
+          "Clear product navigation and repeated calls to action",
+          "Local content for the Chomutov and Krušné hory region",
+          "Quotation form with explicit GDPR consent",
+        ],
+        live: "Visit website",
+      };
 
   return (
     <section id="projects" style={{ padding: "120px 48px", borderTop: `1px solid ${T.border}`, position: "relative", zIndex: 1 }}>
@@ -161,7 +184,7 @@ export function Projects() {
         <FadeUp delay={0.1}><SectionTitle>{t.projects.title}</SectionTitle></FadeUp>
         <FadeUp delay={0.2}><FeaturedProject /></FadeUp>
 
-        <div className="more-projects" style={{ display: "grid", gridTemplateColumns: "1.35fr .65fr", gap: 16, marginTop: 24 }}>
+        <div className="more-projects" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
           <FadeUp delay={0.34}>
             <ProjectCard
               title="Invoice Automation MVP"
@@ -176,6 +199,19 @@ export function Projects() {
             />
           </FadeUp>
           <FadeUp delay={0.44}>
+            <ProjectCard
+              title="Střechy Krušnohor"
+              tag={roofing.tag}
+              description={roofing.description}
+              highlights={roofing.highlights}
+              techs={["WordPress", "Responsive UI", "Local SEO", "Lead Forms"]}
+              link="https://strechykrusnohor.cz/"
+              linkText={roofing.live}
+              caseStudyLink="/projects/strechy-krusnohor"
+              preview="roofing"
+            />
+          </FadeUp>
+          <FadeUp delay={0.54} style={{ gridColumn: "1 / -1" }}>
             <ProjectCard
               title={t.projects.more.title}
               tag={t.projects.more.tag}
