@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mark-portfolio-sandy.vercel.app/sitemap.xml
