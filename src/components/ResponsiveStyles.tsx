@@ -28,6 +28,8 @@ export function ResponsiveStyles() {
         .nav-primary-links a:nth-child(5) { display:none; }
         .preview-shell { grid-template-columns:96px 1fr !important; }
         .invoice-preview-grid { grid-template-columns:1fr !important; }
+        .roofing-preview-hero { grid-template-columns:1fr !important; }
+        .roofing-products { grid-template-columns:repeat(2,1fr) !important; }
         .case-facts { grid-template-columns:1fr !important; }
       }
 
@@ -42,6 +44,8 @@ export function ResponsiveStyles() {
         .nav-primary-links { display:none !important; }
         .preview-shell { grid-template-columns:1fr !important; }
         .preview-shell aside { display:none !important; }
+        .roofing-preview-nav { display:none !important; }
+        .roofing-preview-hero > div:last-child { display:none !important; }
         .architecture-flow { padding-bottom:10px !important; }
       }
     `;
