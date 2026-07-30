@@ -4,11 +4,11 @@ import { T } from "../theme";
 import { useHover } from "../hooks/useHover";
 import { usePreferences } from "../preferences";
 
-function NavLink({ id, label }: { id: string; label: string }) {
+function NavLink({ href, label }: { href: string; label: string }) {
   const [hovered, hoverProps] = useHover();
   return (
     <a
-      href={`#${id}`}
+      href={href}
       {...hoverProps}
       style={{
         fontSize: 14,
@@ -66,6 +66,8 @@ function ControlButton({
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const { language, theme, t, toggleLanguage, toggleTheme } = usePreferences();
+  const isHome = window.location.pathname === "/";
+  const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -74,11 +76,11 @@ export function Nav() {
   }, []);
 
   const links = [
-    { id: "about", label: t.nav.about },
-    { id: "experience", label: t.nav.experience },
-    { id: "stack", label: t.nav.stack },
-    { id: "projects", label: t.nav.projects },
-    { id: "contact", label: t.nav.contact },
+    { href: sectionHref("about"), label: t.nav.about },
+    { href: sectionHref("experience"), label: t.nav.experience },
+    { href: sectionHref("stack"), label: t.nav.stack },
+    { href: sectionHref("projects"), label: t.nav.projects },
+    { href: sectionHref("contact"), label: t.nav.contact },
   ];
 
   return (
@@ -101,7 +103,7 @@ export function Nav() {
       }}
     >
       <a
-        href="#hero"
+        href={isHome ? "#hero" : "/"}
         style={{
           fontFamily: "'Space Grotesk',sans-serif",
           fontWeight: 700,
@@ -112,13 +114,13 @@ export function Nav() {
           flexShrink: 0,
         }}
       >
-        mark<span style={{ color: T.accent }}>.</span>
+        Marek Šípek<span style={{ color: T.accent }}>.</span>
       </a>
 
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
         <div className="nav-primary-links" style={{ display: "flex", gap: 24, alignItems: "center" }}>
-          {links.map((section) => (
-            <NavLink key={section.id} {...section} />
+          {links.map((link) => (
+            <NavLink key={link.href} {...link} />
           ))}
         </div>
 
