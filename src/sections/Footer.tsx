@@ -1,6 +1,9 @@
 import { T } from "../theme";
+import { usePreferences } from "../preferences";
 
 export function Footer() {
+  const { t } = usePreferences();
+
   return (
     <footer
       style={{
@@ -11,8 +14,15 @@ export function Footer() {
         zIndex: 1,
       }}
     >
-      <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: T.muted, margin: 0 }}>
-        Marek Šípek © 2026 · Built with care
+      <p
+        style={{
+          fontFamily: "'JetBrains Mono',monospace",
+          fontSize: 12,
+          color: T.muted,
+          margin: 0,
+        }}
+      >
+        Marek Šípek © 2026 · {t.footer}
       </p>
     </footer>
   );
