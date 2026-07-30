@@ -38,17 +38,18 @@ function ListSection({ title, items }: { title: string; items: string[] }) {
 export function ProjectCaseStudy({ slug }: { slug: ProjectSlug }) {
   const { language, t } = usePreferences();
   const project = getCaseStudy(language, slug);
+  const isWebsite = slug === "strechy-krusnohor";
   const copy = language === "cs"
     ? {
         back: "Zpět na projekty",
         source: "Zdrojový kód",
-        live: "Živé demo",
+        live: isWebsite ? "Živý web" : "Živé demo",
         overview: "Přehled projektu",
       }
     : {
         back: "Back to projects",
         source: "Source code",
-        live: "Live demo",
+        live: isWebsite ? "Live website" : "Live demo",
         overview: "Project overview",
       };
 
@@ -88,9 +89,11 @@ export function ProjectCaseStudy({ slug }: { slug: ProjectSlug }) {
                 {copy.live} <ExternalLink size={14} />
               </Btn>
             )}
-            <Btn href={project.repositoryUrl} external>
-              <Code2 size={15} /> {copy.source}
-            </Btn>
+            {project.repositoryUrl && (
+              <Btn href={project.repositoryUrl} external>
+                <Code2 size={15} /> {copy.source}
+              </Btn>
+            )}
           </div>
         </div>
 
