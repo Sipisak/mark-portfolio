@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Github, Linkedin, ArrowDown, ChevronRight } from "lucide-react";
 import { T, accentAlpha } from "../theme";
 import { Btn } from "../components/Button";
+import { usePreferences } from "../preferences";
 
-/* ─── hero ────────────────────────────────────────── */
 export function Hero() {
   const [mounted, setMounted] = useState(false);
+  const { t } = usePreferences();
+
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
-  const trans = (delay: number) =>
+  const transition = (delay: number) =>
     `opacity 0.9s cubic-bezier(.4,0,.2,1) ${delay}s, transform 0.9s cubic-bezier(.4,0,.2,1) ${delay}s`;
 
   return (
@@ -32,12 +34,11 @@ export function Hero() {
           left: "-5%",
           width: "60vw",
           height: "60vw",
-          background: `radial-gradient(ellipse, ${accentAlpha(
-            0.07
-          )} 0%, transparent 70%)`,
+          background: `radial-gradient(ellipse, ${accentAlpha(0.07)} 0%, transparent 70%)`,
           pointerEvents: "none",
         }}
       />
+
       <div
         style={{
           maxWidth: 1080,
@@ -57,10 +58,10 @@ export function Hero() {
             marginBottom: 28,
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
-            transition: trans(0.15),
+            transition: transition(0.15),
           }}
         >
-          {"// Software Engineer · AI Automation"}
+          {t.hero.eyebrow}
         </p>
 
         <h1
@@ -74,7 +75,7 @@ export function Hero() {
             margin: "0 0 40px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(40px)",
-            transition: trans(0.3),
+            transition: transition(0.3),
           }}
         >
           Mark<span style={{ color: T.accent }}>.</span>
@@ -84,20 +85,16 @@ export function Hero() {
           style={{
             fontSize: 19,
             color: T.muted,
-            maxWidth: 560,
+            maxWidth: 620,
             lineHeight: 1.7,
             marginBottom: 44,
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(24px)",
-            transition: trans(0.5),
+            transition: transition(0.5),
           }}
         >
-          Building reliable software — from backend systems and real-time
-          applications to{" "}
-          <span style={{ color: T.text, fontWeight: 500 }}>
-            AI-powered automation
-          </span>
-          .
+          {t.hero.lead}{" "}
+          <span style={{ color: T.text, fontWeight: 500 }}>{t.hero.emphasis}</span>.
         </p>
 
         <div
@@ -107,11 +104,11 @@ export function Hero() {
             flexWrap: "wrap",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(20px)",
-            transition: trans(0.65),
+            transition: transition(0.65),
           }}
         >
           <Btn href="#projects" primary>
-            View projects <ChevronRight size={16} />
+            {t.hero.projectsButton} <ChevronRight size={16} />
           </Btn>
           <Btn href="https://github.com/Sipisak" external>
             <Github size={15} /> GitHub
