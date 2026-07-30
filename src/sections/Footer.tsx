@@ -12,7 +12,7 @@ export function Footer() {
       }}
     >
       <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: T.muted, margin: 0 }}>
-        Mark © 2026 · Built with care
+        Marek Šípek © 2026 · Built with care
       </p>
     </footer>
   );
