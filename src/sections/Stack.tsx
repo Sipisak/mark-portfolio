@@ -5,10 +5,41 @@ import { Label, SectionTitle } from "../components/SectionHeading";
 import { useHover } from "../hooks/useHover";
 
 const STACK: { label: string; items: string[] }[] = [
-  { label: "Languages", items: ["TypeScript", "JavaScript", "Java", "Python", "HTML", "CSS"] },
-  { label: "Frameworks & Libraries", items: ["Next.js", "React", "Node.js", "Tailwind CSS", "Shadcn UI"] },
-  { label: "Databases & Infrastructure", items: ["MongoDB", "PostgreSQL", "Docker", "Linux"] },
-  { label: "APIs & Tooling", items: ["REST APIs", "Inngest", "Gemini API", "Finnhub API", "Git", "Postman", "Figma", "VS Code"] },
+  {
+    label: "Languages",
+    items: ["TypeScript", "JavaScript", "Java", "Python", "SQL", "HTML", "CSS"],
+  },
+  {
+    label: "Frontend",
+    items: ["React", "Next.js", "Vite", "Tailwind CSS", "Shadcn UI"],
+  },
+  {
+    label: "Backend & Data",
+    items: [
+      "Node.js",
+      "Azure Functions",
+      "REST APIs",
+      "Prisma",
+      "PostgreSQL",
+      "Azure SQL",
+      "MongoDB",
+    ],
+  },
+  {
+    label: "Cloud & Automation",
+    items: [
+      "Azure",
+      "Docker",
+      "GitHub Actions",
+      "Inngest",
+      "WebSockets",
+      "Document Intelligence",
+    ],
+  },
+  {
+    label: "Testing & Tooling",
+    items: ["Playwright", "Vitest", "Git", "Postman", "Linux", "Figma", "VS Code"],
+  },
 ];
 
 function Pill({ children }: { children: ReactNode }) {
@@ -55,8 +86,8 @@ export function Stack() {
         </FadeUp>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-          {STACK.map((row, ri) => (
-            <FadeUp key={ri} delay={0.15 + ri * 0.08}>
+          {STACK.map((row, rowIndex) => (
+            <FadeUp key={row.label} delay={0.15 + rowIndex * 0.08}>
               <p
                 style={{
                   fontFamily: "'JetBrains Mono',monospace",
