@@ -12,14 +12,25 @@ import { Projects } from "./sections/Projects";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./sections/Footer";
 import { ProjectCaseStudy } from "./pages/ProjectCaseStudy";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
-function resolveProjectSlug() {
-  const match = window.location.pathname.match(/^\/projects\/([^/]+)\/?$/);
-  return match && isProjectSlug(match[1]) ? match[1] : null;
+function resolveRoute() {
+  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (pathname === "/") {
+    return { type: "home" as const };
+  }
+
+  const match = pathname.match(/^\/projects\/([^/]+)$/);
+  if (match && isProjectSlug(match[1])) {
+    return { type: "project" as const, slug: match[1] };
+  }
+
+  return { type: "not-found" as const };
 }
 
 export default function Portfolio() {
-  const projectSlug = resolveProjectSlug();
+  const route = resolveRoute();
 
   return (
     <div
@@ -37,8 +48,10 @@ export default function Portfolio() {
       <GridDots />
       <Nav />
 
-      {projectSlug ? (
-        <ProjectCaseStudy slug={projectSlug} />
+      {route.type === "project" ? (
+        <ProjectCaseStudy slug={route.slug} />
+      ) : route.type === "not-found" ? (
+        <NotFoundPage />
       ) : (
         <>
           <Hero />
