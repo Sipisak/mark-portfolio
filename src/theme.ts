@@ -1,19 +1,20 @@
-/* ─── palette & tokens ────────────────────────────── */
-const ACCENT_RGB = "240, 112, 64";
+/* ─── theme-aware palette & tokens ────────────────── */
 
-/** Accent color at an arbitrary alpha — keeps every translucent accent in sync with ACCENT_RGB. */
-export const accentAlpha = (alpha: number) => `rgba(${ACCENT_RGB}, ${alpha})`;
+/** Accent color at an arbitrary alpha, driven by the active CSS theme. */
+export const accentAlpha = (alpha: number) =>
+  `rgba(var(--color-accent-rgb), ${alpha})`;
 
 export const T = {
-  bg: "#07090F",
-  surface: "#0D1520",
-  surface2: "#142030",
-  border: "#1C2D42",
-  text: "#CDD7E8",
-  muted: "#556070",
-  accent: "#F07040",
-  accentHover: "#D85F30",
+  bg: "var(--color-bg)",
+  nav: "var(--color-nav)",
+  surface: "var(--color-surface)",
+  surface2: "var(--color-surface-2)",
+  border: "var(--color-border)",
+  text: "var(--color-text)",
+  muted: "var(--color-muted)",
+  accent: "var(--color-accent)",
+  accentHover: "var(--color-accent-hover)",
   accentLow: accentAlpha(0.1),
-  blue: "#5599EE",
-  white: "#FFFFFF",
+  blue: "var(--color-blue)",
+  white: "var(--color-heading)",
 } as const;
