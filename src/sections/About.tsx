@@ -41,41 +41,37 @@ export function About() {
     <>
       I'm a{" "}
       <strong style={{ color: T.text, fontWeight: 500 }}>
-        full-stack software engineer
+        software engineer
       </strong>{" "}
-      based in Czech Republic, holding an Ing./MSc in Applied Informatics from
-      the{" "}
+      based in the Czech Republic, holding an Ing./MSc in Applied Informatics
+      from the{" "}
       <strong style={{ color: T.text, fontWeight: 500 }}>
         University of Hradec Králové
       </strong>
       .
     </>,
     <>
-      My focus is on building production-grade web applications — from{" "}
-      <strong style={{ color: T.text, fontWeight: 500 }}>
-        robust backend APIs
-      </strong>{" "}
-      to{" "}
-      <strong style={{ color: T.text, fontWeight: 500 }}>
-        modern React frontends
-      </strong>
-      , with a growing specialization in AI integrations and event-driven
-      automation.
+      I build full-stack applications, backend services, system integrations,
+      and automation workflows — from initial architecture and implementation
+      to testing, deployment, and monitoring.
     </>,
     <>
-      Currently exploring{" "}
+      My current work focuses on{" "}
       <strong style={{ color: T.text, fontWeight: 500 }}>
-        AI automation, intelligent integrations, and real-time systems
-      </strong>
-      .
+        AI-powered automation, document processing, event-driven systems, and
+        internal business applications
+      </strong>{" "}
+      using TypeScript, Node.js, React, Azure, and SQL.
     </>,
   ];
+
   const stats = [
     { val: "Ing", sub: "MSc Applied Informatics" },
-    { val: "12+", sub: "Repositories on GitHub" },
+    { val: "FS", sub: "Frontend to Infrastructure" },
     { val: "AI", sub: "Automation & Integrations" },
-    { val: "FS", sub: "Full-Stack Development" },
+    { val: "AZ", sub: "Azure Development" },
   ];
+
   return (
     <Section id="about">
       <FadeUp>
@@ -92,9 +88,9 @@ export function About() {
       <div className="about-grid">
         <FadeUp delay={0.2}>
           <div>
-            {paragraphs.map((p, i) => (
+            {paragraphs.map((paragraph, index) => (
               <p
-                key={i}
+                key={index}
                 style={{
                   fontSize: 17,
                   color: T.muted,
@@ -102,7 +98,7 @@ export function About() {
                   marginBottom: 18,
                 }}
               >
-                {p}
+                {paragraph}
               </p>
             ))}
           </div>
@@ -120,8 +116,8 @@ export function About() {
               overflow: "hidden",
             }}
           >
-            {stats.map((s, i) => (
-              <StatBox key={i} {...s} />
+            {stats.map((stat) => (
+              <StatBox key={stat.sub} {...stat} />
             ))}
           </div>
         </FadeUp>
