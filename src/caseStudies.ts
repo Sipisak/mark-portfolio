@@ -1,14 +1,14 @@
 import type { Language } from "./translations";
 
-export type ProjectSlug = "signalist" | "invoice-automation";
+export type ProjectSlug = "signalist" | "invoice-automation" | "strechy-krusnohor";
 
 export type CaseStudyContent = {
   title: string;
   eyebrow: string;
   summary: string;
-  repositoryUrl: string;
+  repositoryUrl?: string;
   liveUrl?: string;
-  preview: "signalist" | "invoice";
+  preview: "signalist" | "invoice" | "roofing";
   facts: { label: string; value: string }[];
   problem: { title: string; body: string };
   solution: { title: string; body: string };
@@ -177,6 +177,85 @@ const content: Record<Language, Record<ProjectSlug, CaseStudyContent>> = {
         ],
       },
     },
+    "strechy-krusnohor": {
+      title: "Střechy Krušnohor",
+      eyebrow: "// Business website case study",
+      summary:
+        "A responsive WordPress website for a regional roofing-material supplier, designed around clear product discovery, local search visibility, and straightforward lead generation.",
+      liveUrl: "https://strechykrusnohor.cz/",
+      preview: "roofing",
+      facts: [
+        { label: "Role", value: "Web design & implementation" },
+        { label: "Scope", value: "UX, WordPress, content, forms, SEO" },
+        { label: "Status", value: "Live business website" },
+      ],
+      problem: {
+        title: "The problem",
+        body:
+          "The company needed one clear online presentation for roofing materials, product categories, local expertise, and enquiries. Visitors had to quickly understand what the business offers, find the relevant product area, and reach a concrete contact or quotation action without navigating a complex catalogue.",
+      },
+      solution: {
+        title: "The solution",
+        body:
+          "The website organizes the offer into distinct product categories, repeats clear quotation calls to action, and combines product information with local trust signals. WordPress keeps routine content changes manageable, while responsive layouts and concise page structure support users arriving from both desktop and mobile search.",
+      },
+      architecture: {
+        title: "Delivery flow",
+        intro:
+          "The project followed a practical content-first process focused on a maintainable business website rather than a custom application stack.",
+        steps: [
+          "Business goals and content structure",
+          "Navigation and page hierarchy",
+          "Responsive visual implementation",
+          "Product and local SEO content",
+          "Quotation form and GDPR consent",
+          "Deployment, review, and iteration",
+        ],
+      },
+      decisions: {
+        title: "Key implementation decisions",
+        items: [
+          {
+            title: "Conversion-focused structure",
+            body:
+              "Product categories and quotation actions are visible early, so visitors can move from discovery to contact without unnecessary steps.",
+          },
+          {
+            title: "Local search context",
+            body:
+              "Content connects the product offer with the Chomutov and Krušné hory region instead of relying only on generic roofing keywords.",
+          },
+          {
+            title: "Maintainable WordPress delivery",
+            body:
+              "The site remains editable through a familiar CMS, which is more appropriate for ongoing product and campaign content than a custom admin system.",
+          },
+          {
+            title: "Responsive-first presentation",
+            body:
+              "Navigation, product cards, calls to action, and the enquiry path are structured to remain usable on smaller screens.",
+          },
+        ],
+      },
+      quality: {
+        title: "Delivery and quality",
+        items: [
+          "Responsive layout across the main product, company, offer, campaign, and contact areas",
+          "Consistent quotation calls to action throughout the website",
+          "Enquiry form with explicit personal-data consent",
+          "Structured product navigation and production deployment on the public domain",
+        ],
+      },
+      limitations: {
+        title: "Current boundaries",
+        items: [
+          "The website is an informational and lead-generation presentation, not an e-commerce system",
+          "Performance and maintenance remain partly dependent on the WordPress theme and plugins",
+          "Product availability and pricing are handled through direct enquiries rather than live inventory",
+          "Public conversion metrics are not currently included in this case study",
+        ],
+      },
+    },
   },
   cs: {
     signalist: {
@@ -336,6 +415,85 @@ const content: Record<Language, Record<ProjectSlug, CaseStudyContent>> = {
         ],
       },
     },
+    "strechy-krusnohor": {
+      title: "Střechy Krušnohor",
+      eyebrow: "// Případová studie firemního webu",
+      summary:
+        "Responzivní WordPress web pro regionálního prodejce střešních materiálů, postavený kolem přehledné nabídky produktů, lokálního SEO a jednoduchého získávání poptávek.",
+      liveUrl: "https://strechykrusnohor.cz/",
+      preview: "roofing",
+      facts: [
+        { label: "Role", value: "Návrh a realizace webu" },
+        { label: "Rozsah", value: "UX, WordPress, obsah, formuláře, SEO" },
+        { label: "Stav", value: "Nasazený firemní web" },
+      ],
+      problem: {
+        title: "Problém",
+        body:
+          "Firma potřebovala jednu přehlednou online prezentaci střešních materiálů, produktových kategorií, lokální odbornosti a možnosti poptávky. Návštěvník musel rychle pochopit nabídku, najít správnou oblast produktů a přejít ke konkrétnímu kontaktu nebo cenové nabídce bez procházení složitého katalogu.",
+      },
+      solution: {
+        title: "Řešení",
+        body:
+          "Web rozděluje nabídku do jasných produktových kategorií, opakuje srozumitelné výzvy k poptávce a propojuje informace o produktech s lokálními prvky důvěry. WordPress umožňuje běžné úpravy obsahu a responzivní struktura podporuje návštěvníky z desktopového i mobilního vyhledávání.",
+      },
+      architecture: {
+        title: "Postup realizace",
+        intro:
+          "Projekt vznikal praktickým content-first postupem zaměřeným na udržitelný firemní web, nikoliv na zbytečně složitý aplikační stack.",
+        steps: [
+          "Cíle firmy a struktura obsahu",
+          "Navigace a hierarchie stránek",
+          "Responzivní vizuální implementace",
+          "Produktový obsah a lokální SEO",
+          "Poptávkový formulář a GDPR souhlas",
+          "Nasazení, kontrola a iterace",
+        ],
+      },
+      decisions: {
+        title: "Klíčová rozhodnutí při realizaci",
+        items: [
+          {
+            title: "Struktura zaměřená na poptávky",
+            body:
+              "Produktové kategorie a výzvy k cenové nabídce jsou viditelné brzy, aby se návštěvník dostal od hledání ke kontaktu bez zbytečných kroků.",
+          },
+          {
+            title: "Lokální kontext pro vyhledávání",
+            body:
+              "Obsah propojuje nabídku s okresem Chomutov a regionem Krušných hor místo spoléhání pouze na obecná klíčová slova o střechách.",
+          },
+          {
+            title: "Udržitelná realizace ve WordPressu",
+            body:
+              "Web zůstává upravitelný ve známém CMS, což je pro průběžné změny produktů a akcí vhodnější než vlastní administrační systém.",
+          },
+          {
+            title: "Responzivní prezentace",
+            body:
+              "Navigace, produktové karty, CTA i poptávková cesta jsou strukturované tak, aby zůstaly použitelné na menších displejích.",
+          },
+        ],
+      },
+      quality: {
+        title: "Dodání a kvalita",
+        items: [
+          "Responzivní zpracování hlavních produktových, firemních, akčních a kontaktních částí",
+          "Konzistentní výzvy k cenové nabídce napříč webem",
+          "Poptávkový formulář s výslovným souhlasem se zpracováním osobních údajů",
+          "Strukturovaná produktová navigace a produkční nasazení na veřejné doméně",
+        ],
+      },
+      limitations: {
+        title: "Současné hranice",
+        items: [
+          "Web je informační a poptávková prezentace, nikoliv e-shop",
+          "Výkon a údržba částečně závisejí na použitém WordPress tématu a pluginech",
+          "Dostupnost produktů a ceny se řeší přímou poptávkou, ne živým skladovým systémem",
+          "Veřejné konverzní metriky zatím nejsou součástí případové studie",
+        ],
+      },
+    },
   },
 };
 
@@ -344,5 +502,5 @@ export function getCaseStudy(language: Language, slug: ProjectSlug) {
 }
 
 export function isProjectSlug(value: string): value is ProjectSlug {
-  return value === "signalist" || value === "invoice-automation";
+  return value === "signalist" || value === "invoice-automation" || value === "strechy-krusnohor";
 }
