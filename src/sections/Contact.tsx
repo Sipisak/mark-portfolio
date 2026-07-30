@@ -4,6 +4,7 @@ import { T } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
 import { useHover } from "../hooks/useHover";
+import { usePreferences } from "../preferences";
 
 function ContactLink({
   href,
@@ -42,6 +43,8 @@ function ContactLink({
 }
 
 export function Contact() {
+  const { t } = usePreferences();
+
   return (
     <section
       id="contact"
@@ -55,19 +58,18 @@ export function Contact() {
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         <div style={{ maxWidth: 650 }}>
           <FadeUp>
-            <Label>{"// Contact"}</Label>
+            <Label>{t.contact.label}</Label>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <SectionTitle>Let's connect.</SectionTitle>
+            <SectionTitle>{t.contact.title}</SectionTitle>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <p style={{ fontSize: 18, color: T.muted, lineHeight: 1.7, marginBottom: 18 }}>
-              I'm always open to conversations about software engineering,
-              AI automation, and interesting technical projects.
+              {t.contact.primary}
             </p>
             <p style={{ fontSize: 14, color: T.muted, lineHeight: 1.7, marginBottom: 40 }}>
-              Open to selected collaborations alongside my main work.
+              {t.contact.secondary}
             </p>
           </FadeUp>
 
