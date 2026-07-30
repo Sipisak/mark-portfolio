@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Moon, Sun } from "lucide-react";
 import { T } from "../theme";
 import { useHover } from "../hooks/useHover";
@@ -30,7 +30,7 @@ function ControlButton({
 }: {
   label: string;
   onClick: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const [hovered, hoverProps] = useHover();
   return (
