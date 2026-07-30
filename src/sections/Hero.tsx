@@ -68,17 +68,18 @@ export function Hero() {
           style={{
             fontFamily: "'Space Grotesk',sans-serif",
             fontWeight: 700,
-            fontSize: "clamp(72px,11vw,140px)",
-            lineHeight: 0.88,
-            letterSpacing: "-0.04em",
+            fontSize: "clamp(56px,9vw,122px)",
+            lineHeight: 0.92,
+            letterSpacing: "-0.045em",
             color: T.white,
             margin: "0 0 40px",
+            maxWidth: 1040,
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(40px)",
             transition: transition(0.3),
           }}
         >
-          Mark<span style={{ color: T.accent }}>.</span>
+          Marek Šípek<span style={{ color: T.accent }}>.</span>
         </h1>
 
         <p
