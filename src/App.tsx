@@ -4,12 +4,12 @@ import { Nav } from "./components/Nav";
 import { ResponsiveStyles } from "./components/ResponsiveStyles";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
+import { Experience } from "./sections/Experience";
 import { Stack } from "./sections/Stack";
 import { Projects } from "./sections/Projects";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./sections/Footer";
 
-/* ─── app ─────────────────────────────────────────── */
 export default function Portfolio() {
   return (
     <div
@@ -28,6 +28,7 @@ export default function Portfolio() {
       <Nav />
       <Hero />
       <About />
+      <Experience />
       <Stack />
       <Projects />
       <Contact />
