@@ -1,9 +1,8 @@
 import { type ReactNode } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { T } from "../theme";
 import { FadeUp } from "../components/FadeUp";
 import { Label, SectionTitle } from "../components/SectionHeading";
-import { Btn } from "../components/Button";
 import { useHover } from "../hooks/useHover";
 
 function ContactLink({
@@ -76,13 +75,7 @@ export function Contact() {
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <Btn href="mailto:marek.sipek@tronexo.com" primary>
-              <Mail size={15} /> Say hello
-            </Btn>
-          </FadeUp>
-
-          <FadeUp delay={0.4}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 32 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
               <ContactLink href="https://github.com/Sipisak" icon={<Github size={16} />} label="github.com/Sipisak" />
               <ContactLink href="https://www.linkedin.com/in/marek-%C5%A1%C3%ADpek-74322825a" icon={<Linkedin size={16} />} label="LinkedIn — Mark" />
             </div>
