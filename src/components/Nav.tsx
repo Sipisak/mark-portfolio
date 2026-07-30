@@ -21,14 +21,14 @@ function NavLink({ label }: { label: string }) {
   );
 }
 
-/* ─── nav ─────────────────────────────────────────── */
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       style={{
@@ -60,9 +60,9 @@ export function Nav() {
       >
         mark<span style={{ color: T.accent }}>.</span>
       </a>
-      <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
-        {["About", "Stack", "Projects", "Contact"].map((s) => (
-          <NavLink key={s} label={s} />
+      <div className="nav-links" style={{ display: "flex", gap: 24, alignItems: "center" }}>
+        {["About", "Experience", "Stack", "Projects", "Contact"].map((section) => (
+          <NavLink key={section} label={section} />
         ))}
       </div>
     </nav>
