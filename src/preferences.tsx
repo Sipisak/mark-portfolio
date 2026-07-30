@@ -54,11 +54,13 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
 
-    const copy = translations[language].meta;
-    document.title = copy.title;
+    if (!window.location.pathname.startsWith("/projects/")) {
+      const copy = translations[language].meta;
+      document.title = copy.title;
 
-    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    description?.setAttribute("content", copy.description);
+      const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+      description?.setAttribute("content", copy.description);
+    }
   }, [language, theme]);
 
   const value = useMemo<PreferencesContextValue>(
